@@ -1,7 +1,7 @@
 #include "triangle.h"
 #include <cmath>
 
-// відстань між точками
+
 double distance(Point a, Point b)
 {
     return sqrt((b.x-a.x)*(b.x-a.x) + (b.y-a.y)*(b.y-a.y));
@@ -19,28 +19,26 @@ double areaHeron(Point a, Point b, Point c)
     return sqrt(p*(p-ab)*(p-bc)*(p-ca));
 }
 
-// площа за формулою Гауса
+
 double areaGauss(Point a, Point b, Point c)
 {
     return fabs(a.x*(b.y-c.y)+b.x*(c.y-a.y)+c.x*(a.y-b.y))/2;
 }
 
-// векторний добуток
+
 double cross(Point a, Point b, Point c)
 {
     return (b.x-a.x)*(c.y-a.y) - (b.y-a.y)*(c.x-a.x);
 }
 
-// перевірка виродженого трикутника
+
 bool isDegenerate(Point a, Point b, Point c)
 {
     return areaGauss(a,b,c)==0;
 }
 
-// перевірка точки
-// 0 - зовні
-// 1 - всередині
-// 2 - на межі
+
+
 int pointInTriangle(Point a, Point b, Point c, Point p)
 {
     double c1 = cross(a,b,p);
